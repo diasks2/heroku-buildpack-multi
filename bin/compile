@@ -42,6 +42,8 @@ for BUILDPACK in $(cat $1/.buildpacks); do
     chmod -f +x $dir/bin/{detect,compile,release} || true
 
     framework=$($dir/bin/detect $1)
+    echo "-----> Printing Environment Variables"
+    printenv
 
     if [ $? == 0 ]; then
       echo "=====> Detected Framework: $framework"
